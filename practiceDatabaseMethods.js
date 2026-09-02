@@ -26,6 +26,15 @@ async function createRecipe(newRecipe) {
     catch {
         console.log("Failed to create recipe.")
     }
-
 }
 createRecipe()
+
+
+async function getAllRecipes(){
+    const allRecipes = await Recipe.find({})
+    allRecipes.forEach(recipe => {console.log(
+    `${recipe.name} is a ${recipe.difficulty} recipe and takes ${recipe.prepTime} minutes to prepare`
+    ) 
+    });
+}
+getAllRecipes()
