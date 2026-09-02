@@ -1,16 +1,31 @@
+const Recipe = require("./models/Recipe")
+const mongoose = require('mongoose')
 
-
-async function connectToDB(){ //connection to the database
-    try{
+async function connectToDB() { //connection to the database
+    try {
         await mongoose.connect('mongodb://localhost:27017')
         console.log("Connected to Database")
     }
-    catch(error){
-        console.log("Error Occured",error)
+    catch (error) {
+        console.log("Error Occured", error)
     }
 }
-
-
 connectToDB() // connect to database
 
 
+async function createRecipe(newRecipe) {
+    try {
+        const newRecipe = await Recipe.create({
+            name: 'Um Ali',
+            instructions: 'bake at 180C',
+            prepTime: 120,
+            difficulty: 'Medium',
+        })
+        console.log(newRecipe)
+    }
+    catch {
+        console.log("Failed to create recipe.")
+    }
+
+}
+createRecipe()
