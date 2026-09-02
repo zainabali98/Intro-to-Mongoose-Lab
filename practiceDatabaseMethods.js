@@ -38,3 +38,18 @@ async function getAllRecipes(){
     });
 }
 getAllRecipes()
+
+
+
+async function getAllRecipes(id){
+    const foundRecipe = await Recipe.findById({})
+    if(foundRecipe){
+            console.log(foundRecipe)
+        }else{
+            console.log("No recipe with this ID exists.")
+        }
+
+}
+getAllRecipes()
+
+
