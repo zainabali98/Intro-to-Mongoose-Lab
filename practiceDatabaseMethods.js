@@ -27,7 +27,7 @@ async function createRecipe(newRecipe) {
         console.log("Failed to create recipe.")
     }
 }
-createRecipe()
+// createRecipe()
 
 
 async function getAllRecipes(){
@@ -37,7 +37,7 @@ async function getAllRecipes(){
     ) 
     });
 }
-getAllRecipes()
+// getAllRecipes()
 
 
 
@@ -50,6 +50,24 @@ async function getAllRecipes(id){
         }
 
 }
-getAllRecipes()
+// getAllRecipes()
 
 
+async function updateRecipe(recipeId, newRecipeData){
+    const updatedRecipeData = await Recipe.findByIdAndUpdate(
+        recipeId,
+        newRecipeData,
+        { new: true }
+    ); 
+    console.log(updatedRecipeData);
+    
+}
+updateRecipe(
+    '6a9850297d55c50ac72d1a37', {
+            name: 'Pizza',
+            instructions: 'smother it in sauce',
+            prepTime: 30,
+            difficulty: 'Easy',
+        
+    }
+)
