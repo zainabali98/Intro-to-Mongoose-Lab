@@ -71,3 +71,14 @@ updateRecipe(
         
     }
 )
+
+
+async function deleteRecipe(recipeId){
+
+    const deletedRecipe = await Recipe.findOneAndDelete({
+        _id: recipeId,
+
+    }); console.log("Recipe successfully deleted.")
+}
+
+deleteRecipe('6a9850297d55c50ac72d1a37');
