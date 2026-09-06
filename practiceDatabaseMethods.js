@@ -1,24 +1,16 @@
 const Recipe = require("./models/Recipe")
 const mongoose = require('mongoose')
+const connectToDB = require('./db')
 
 const {
     createRecipe,
     getAllRecipes,
     updateRecipe,
-    deleteRecipe
+    deleteRecipe,
+    getRecipeById,
 } = require('./recipeUtils');
 
 
-
-async function connectToDB() { //connection to the database
-    try {
-        await mongoose.connect('mongodb://localhost:27017')
-        console.log("Connected to Database")
-    }
-    catch (error) {
-        console.log("Error Occured", error)
-    }
-}
 
 async function main() {
     try {
@@ -26,12 +18,12 @@ async function main() {
 
         createRecipe();
 
-        getRecipeById('YOUR_ID_HERE');
+        getRecipeById('ID');
 
         getAllRecipes();
 
         updateRecipe(
-            'YOUR_ID_HERE',
+            'ID',
             {
                 name: 'Pizza',
                 instructions: 'smother it in sauce',
@@ -40,7 +32,7 @@ async function main() {
             }
         );
 
-        deleteRecipe('YOUR_ID_HERE');
+        deleteRecipe('ID');
 
     } catch (error) {
         console.log(error);
